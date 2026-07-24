@@ -57,7 +57,6 @@ public class UsuarioService {
 
 		// Usa os dados dele o getSenha pra validar
 		if (usuario != null && usuario.getSenha().equals(senha)) {
-			System.out.println("Login feito com sucesso");
 			return usuario;
 		}
 
@@ -78,7 +77,7 @@ public class UsuarioService {
 		if(usuario == null) {
 			return null;
 		}
-		usuarioRepository.salvar(usuario);
+	
 		usuario.setNome(nome);
 		usuario.setEmail(email);
 		

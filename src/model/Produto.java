@@ -126,4 +126,18 @@ public class Produto {
 	public boolean possuiEstoqueSuficiente(int quantidadeDesejada) {
 		return (quantidadeDesejada > 0 && quantidadeDesejada < this.quantidadedeEstoque);
 	}
+	
+	public String informacoesProduto() {
+		return toString();
+	}
+	
+
+	@Override
+	public String toString() {
+		return "+================================= PRODUTO =================================+"
+			+"\nID="+id +"  NOME=" + nome +"  DISPONIVEL NO ESTOQUE="+quantidadedeEstoque+"  PREÇO=R$"+preco+"" 
+			+"\n=============================================================================+";
+	}
+	
+	
 }

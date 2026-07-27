@@ -61,6 +61,8 @@ public class ValidacaoService {
 		}
 		return null;
 	}
+	
+	//metodos arbitrarios
 
 	//Verifica se o usuario existe
 	public Usuario validarExistenciaUsuario(String usuarioId) {

@@ -6,9 +6,9 @@ public class Endereço {
 	private String rua;
 	private String numero;
 	private String complemento;
-	private String cidade;
+	private Cidade cidade;
 
-	public Endereço(String rua, String numero, String complemento, String cidade) {
+	public Endereço(String rua, String numero, String complemento,Cidade cidade) {
 
 		this.rua = Objects.requireNonNull(rua);
 		this.numero = Objects.requireNonNull(numero);
@@ -32,7 +32,7 @@ public class Endereço {
 		return complemento;
 	}
 
-	public String getCidade() {
+	public Cidade getCidade() {
 		return cidade;
 	}
 

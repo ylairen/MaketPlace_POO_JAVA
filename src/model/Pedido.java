@@ -26,12 +26,11 @@ public class Pedido {
 	private final LocalDateTime dataCompra;
 	private final LocalDateTime dataPrevisaoEntrega;
 	private LocalDateTime dataEntrega;
-
+	
 	public Pedido(String produtoId, String clienteId, String vendedorId, int quantidade, Endereço enderecoEntrega,
-			MetodoPagamento metodoPagamento, boolean retirada, double valorProdutos, double valorFrete, double desconto,
-			double valorTotal, StatusPedido status, LocalDateTime dataCompra, LocalDateTime dataPrevisaoEntrega,
-			LocalDateTime dataEntrega) {
-
+			MetodoPagamento metodoPagamento, boolean retirada, double valorProdutos, double valorFrete,
+			LocalDateTime dataPrevisaoEntrega) {
+		
 		this.id = IdService.gerarId();
 		this.produtoId = produtoId;
 		this.clienteId = clienteId;
@@ -54,6 +53,37 @@ public class Pedido {
 		this.dataCompra = LocalDateTime.now();
 		this.dataPrevisaoEntrega = dataPrevisaoEntrega;
 		this.dataEntrega = null;
+		
+	}
+
+	public Pedido(String produtoId, String clienteId, String vendedorId, int quantidade, Endereço enderecoEntrega,
+			MetodoPagamento metodoPagamento, boolean retirada, double valorProdutos, double valorFrete, double desconto,
+			double valorTotal, StatusPedido status, LocalDateTime dataCompra, LocalDateTime dataPrevisaoEntrega,
+			LocalDateTime dataEntrega) {
+		
+		this.id = IdService.gerarId();
+		this.produtoId = produtoId;
+		this.clienteId = clienteId;
+		this.vendedorId = vendedorId;
+
+		if (quantidade < 0) {
+			System.out.println("Quantidade não pode ser negativa");
+		}
+
+		this.quantidade = quantidade;
+		this.enderecoEntrega = enderecoEntrega;
+		this.metodoPagamento = metodoPagamento;
+		this.retirada = retirada;
+		this.valorProdutos = valorProdutos;
+		this.valorFrete = valorFrete;
+		this.desconto = 0;
+		this.valorTotal = valorProdutos + valorFrete;
+		// No momento que faz o pedido muda o status
+		this.status = StatusPedido.EM_TRANSPORTE;
+		this.dataCompra = LocalDateTime.now();
+		this.dataPrevisaoEntrega = dataPrevisaoEntrega;
+		this.dataEntrega = null;
+
 	}
 
 	public double getValorTotal() {

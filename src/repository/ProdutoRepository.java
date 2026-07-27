@@ -28,6 +28,10 @@ public class ProdutoRepository {
 	public Produto buscarPorId(String id) {
 		return produtos.get(id);
 	}
+	//nova classe adicionada
+	public Produto buscarPorNome(String nome) {
+		return produtos.get(nome);
+	}
 
 	public boolean removerProduto(String id) {
 		return produtos.remove(id) != null;

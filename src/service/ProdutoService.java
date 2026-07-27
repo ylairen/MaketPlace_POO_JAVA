@@ -18,7 +18,7 @@ public class ProdutoService {
 	public Produto cadastrarProduto(String nome, String descricao, double preco, int quantidadedeEstoque, Cidade cidade,
 			String vendedorId) {
 
-		Produto produto = new Produto(vendedorId, descricao, preco, quantidadedeEstoque, cidade, vendedorId);
+		Produto produto = new Produto(nome, descricao, preco, quantidadedeEstoque, cidade, vendedorId);
 		produtoRepository.salvar(produto);
 		return produto;
 	}
@@ -27,6 +27,11 @@ public class ProdutoService {
 
 		return produtoRepository.listarTodos();
 
+	}
+	
+	//buscar por nome nova classe adicionada
+	public Produto buscarPorNome(String nome) {
+		return produtoRepository.buscarPorNome(nome);
 	}
 
 	public Produto buscarPorId(String id) {
@@ -38,7 +43,7 @@ public class ProdutoService {
 		//aramazena o objeto do id
 		Produto produto = produtoRepository.buscarPorId(id);
 		
-		if(produto != null) {
+		if(produto == null) {
 			return null;
 		}
 		
@@ -48,8 +53,10 @@ public class ProdutoService {
 		produto.setQuantidadedeEstoque(quantidadedeEstoque);
 		produto.setCidade(cidade);
 		
+		/*
+		 * //redundante
 		produtoRepository.salvar(produto);
-		
+		*/
 		System.out.println("Produto atualizado");
 		return produto;
 		
